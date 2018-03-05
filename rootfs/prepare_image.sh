@@ -8,7 +8,7 @@ gpg --recv-keys 0x1EB2638FF56C0C53 # cower
 for pkg in cower pacaur; do
   git clone "https://aur.archlinux.org/${pkg}.git"
   pushd "$pkg"
-  makepkg -S --noconfirm; sudo pacman -U --noconfirm ${pkg}-*pkg*
+  makepkg -s --noconfirm; makepkg; sudo pacman -U --noconfirm ${pkg}*xz
   popd
 done
 
