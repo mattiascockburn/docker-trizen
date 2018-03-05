@@ -1,6 +1,8 @@
 # Archlinux pkgbuilder
 
-Build packages inside clean docker environment with makepkg.
+Build packages inside clean docker environment with pacaur.
+This may be used as a base for automatic building of multiple packages
+from AUR with AUR dependencies. I use this to feed a custom repository
 
 ## Usage
 

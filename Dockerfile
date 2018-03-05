@@ -3,21 +3,15 @@ LABEL maintainer "ArchLinux Dockerimage Maintainers"
 
 ARG MIRROR_URL="https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"
 
-RUN echo "Server = ${MIRROR_URL}" > /etc/pacman.d/mirrorlist \
-    && pacman -Syu --noconfirm \
-         bzr \
-         git \
-         mercurial \
-         namcap \
-         pkgbuild-introspection \
-         svn \
-    && rm -f \
-         /var/cache/pacman/pkg/* \
-         /var/lib/pacman/sync/* \
-         /etc/pacman.d/mirrorlist.pacnew \
-    && useradd -Um build \
-    && mkdir /pkg
 
 ADD rootfs /
+
+
+RUN ["/bin/bash", "/install_base_env.sh"]
+
+USER build
+
+RUN ["/bin/bash", "/prepare_image.sh"]
+
 
 ENTRYPOINT ["/srv/docker-buildpkg"]
