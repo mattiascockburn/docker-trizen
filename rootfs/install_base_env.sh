@@ -1,8 +1,11 @@
 #!/bin/bash
 
 echo "Server = ${MIRROR_URL}" > /etc/pacman.d/mirrorlist
-
-sudo pacman -Syu --noconfirm \
+cat <<EOF >>/etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOF
+pacman -Syu --noconfirm \
        bzr \
        git \
        mercurial \
