@@ -7,10 +7,10 @@ fi
 
 # Update current system to latest
 # if set, also install additional packages
-
+[[ -n "$DEP_PKGS" ]] && pacman -Sy $DEP_PKGS
 sudo chown -R build /build
 
 # unset docker-vars for better build
 unset DEP_PKGS MIRROR_URL
 
-pacaur -Sy --noedit --noconfirm $*
+trizen $@

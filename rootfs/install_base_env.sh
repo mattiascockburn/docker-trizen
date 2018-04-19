@@ -11,7 +11,15 @@ pacman -Syu --noprogressbar --noconfirm \
        mercurial \
        namcap \
        svn \
-       rust
+       rust \
+       perl-json-xs \
+       perl-libwww \
+       perl-term-ui \
+       pacman  \
+       perl-json  \
+       perl-data-dump  \
+       perl-lwp-protocol-https  \
+       perl-term-readline-gnu
 
 sudo rm -f \
   /var/cache/pacman/pkg/* \

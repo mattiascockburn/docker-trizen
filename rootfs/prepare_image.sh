@@ -6,9 +6,10 @@ mkdir tmp;cd tmp
 sudo pacman -Sy
 
 
-gpg --recv-keys 0x1EB2638FF56C0C53 # cower
+# working around weird PATH/profile issue
+. /etc/profile
 
-for pkg in cower pacaur; do
+for pkg in trizen; do
   git clone "https://aur.archlinux.org/${pkg}.git"
   pushd "$pkg"
   makepkg -s --noconfirm; makepkg; sudo pacman -U --noconfirm ${pkg}*xz
